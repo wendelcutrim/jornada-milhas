@@ -1,8 +1,8 @@
 export interface Promocao {
-    id: number
-    destino: string
-    imagem: string
-    preco: number
+    id: number;
+    destino: string;
+    imagem: string;
+    preco: number;
 }
 
 export interface UnidadeFederativa {
@@ -16,4 +16,9 @@ export interface Depoimento {
     texto: string;
     autor: string;
     avatar: string;
+}
+
+export interface Login {
+    email: string;
+    senha: string;
 }
