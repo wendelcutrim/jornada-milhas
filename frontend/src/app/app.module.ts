@@ -26,6 +26,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { ModalComponent } from './shared/modal/modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { BotaoControleComponent } from './shared/botao-controle/botao-controle.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -35,47 +38,52 @@ import { DropdownUfComponent } from './shared/form-busca/dropdown-uf/dropdown-uf
 import { SeletorPassageiroComponent } from './shared/seletor-passageiro/seletor-passageiro.component';
 import { DepoimentosComponent } from './pages/home/depoimentos/depoimentos.component';
 import { LoginComponent } from './pages/login/login.component';
+import { FormUserBaseComponent } from './shared/form-user-base/form-user-base.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    BannerComponent,
-    CardComponent,
-    ContainerComponent,
-    HomeComponent,
-    FooterComponent,
-    CardBuscaComponent,
-    CardDepoimentoComponent,
-    FormBuscaComponent,
-    ModalComponent,
-    BotaoControleComponent,
-    PromocoesComponent,
-    DropdownUfComponent,
-    SeletorPassageiroComponent,
-    DepoimentosComponent,
-    LoginComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatCardModule,
-    MatButtonToggleModule,
-    MatIconModule,
-    MatChipsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatDialogModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    MatAutocompleteModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        BannerComponent,
+        CardComponent,
+        ContainerComponent,
+        HomeComponent,
+        FooterComponent,
+        CardBuscaComponent,
+        CardDepoimentoComponent,
+        FormBuscaComponent,
+        ModalComponent,
+        BotaoControleComponent,
+        PromocoesComponent,
+        DropdownUfComponent,
+        SeletorPassageiroComponent,
+        DepoimentosComponent,
+        LoginComponent,
+        FormUserBaseComponent,
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatCardModule,
+        MatButtonToggleModule,
+        MatIconModule,
+        MatChipsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatDialogModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        MatAutocompleteModule,
+        MatRadioModule,
+        MatDividerModule,
+        MatCheckboxModule,
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

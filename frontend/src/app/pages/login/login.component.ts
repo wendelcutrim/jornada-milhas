@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { PATTERNS } from 'src/app/constants/pattern.constant';
 import { AutenticacaoService } from 'src/app/core/services/autenticacao.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { AutenticacaoService } from 'src/app/core/services/autenticacao.service'
 })
 export class LoginComponent implements OnInit {
     loginForm!: FormGroup;
-    emailRegExp = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
+    emailRegExp = PATTERNS.EMAIL;
 
     constructor(private formBuilder: FormBuilder, private authService: AutenticacaoService, private router: Router) {}
 
