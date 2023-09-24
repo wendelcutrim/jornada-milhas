@@ -1,11 +1,12 @@
 <header class="app-header">
-  <mat-toolbar>
-    <img src="assets/imagens/logo.png" alt="Logo da aplicação Jornada">
-    <span class="spacer"></span>
-    <button mat-button>Vender milhas</button>
-    <button mat-button>Sobre</button>
-    <button mat-raised-button color="primary">CADASTRE-SE</button>
-    <button mat-stroked-button>LOGIN</button>
-  </mat-toolbar>
+    <mat-toolbar>
+        <button type="button" class="logo" aria-label="ir para home" (click)="redirectHome()">
+            <img src="assets/imagens/logo.png" alt="Logo da aplicação Jornada" aria-hidden="true" tabindex="-1" />
+        </button>
+        <span class="spacer"></span>
+        <button mat-button>Vender milhas</button>
+        <button mat-button>Sobre</button>
+        <button mat-raised-button color="primary">CADASTRE-SE</button>
+        <button mat-stroked-button [routerLink]="'/login'">LOGIN</button>
+    </mat-toolbar>
 </header>
-
