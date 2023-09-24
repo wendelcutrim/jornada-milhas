@@ -22,3 +22,7 @@ export interface Login {
     email: string;
     senha: string;
 }
+
+export interface Token {
+    access_token: string;
+}

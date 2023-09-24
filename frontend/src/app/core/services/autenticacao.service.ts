@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Login } from '../types/type';
+import { Login, Token } from '../types/type';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -12,7 +12,7 @@ export class AutenticacaoService {
 
     constructor(private http: HttpClient) {}
 
-    autenticar(props: Login): Observable<any> {
-        return this.http.post(`${this.apiUrl}/auth/login`, props);
+    autenticar(props: Login): Observable<Token> {
+        return this.http.post<Token>(`${this.apiUrl}/auth/login`, props);
     }
 }
