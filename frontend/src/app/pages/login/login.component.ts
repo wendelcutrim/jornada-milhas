@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AutenticacaoService } from 'src/app/core/services/autenticacao.service';
 import { Login } from 'src/app/core/types/type';
@@ -11,23 +11,19 @@ import { Login } from 'src/app/core/types/type';
 })
 export class LoginComponent implements OnInit {
     loginForm!: FormGroup;
+    emailRegExp = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
 
     constructor(private formBuilder: FormBuilder, private authService: AutenticacaoService, private router: Router) {}
 
     ngOnInit(): void {
         this.loginForm = this.formBuilder.group({
-            email: [''],
-            password: [''],
+            email: [null, [Validators.required, Validators.pattern(this.emailRegExp)]],
+            senha: [null, Validators.required],
         });
     }
 
     login() {
-        const email = this.loginForm.get('email')?.value;
-        const senha = this.loginForm.get('password')?.value;
-
-        const payload: Login = { email, senha };
-
-        this.authService.autenticar(payload).subscribe({
+        this.authService.autenticar(this.loginForm.value).subscribe({
             next: (response) => {
                 console.log('login realizado com sucesso', response);
                 this.loginForm.reset();
