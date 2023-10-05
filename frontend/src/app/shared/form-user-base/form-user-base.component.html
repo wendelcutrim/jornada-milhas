@@ -51,7 +51,7 @@
                             <input matInput formControlName="telefone" placeholder="+XX XXXX-XXXX" />
                             <mat-error *ngIf="cadastroForm.get('telefone')?.errors">Telefone é obrigatório</mat-error>
                         </mat-form-field>
-                        <app-dropdown-uf label="Estado" placeholder="Estado" [control]="estadoControl"> </app-dropdown-uf>
+                        <app-dropdown-uf label="Estado" placeholder="Estado" [control]="estadoControl" placeholder="Estado"> </app-dropdown-uf>
                         <mat-error *ngIf="estadoControl?.errors && estadoControl?.touched">Estado é obrigatório</mat-error>
                     </div>
                 </div>

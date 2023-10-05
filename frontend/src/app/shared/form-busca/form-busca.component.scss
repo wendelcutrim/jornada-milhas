@@ -2,6 +2,10 @@
     margin: 40px 0;
     display: block;
 
+    .drop-container {
+        max-width: 230px;
+    }
+
     .flex-container {
         display: flex;
         align-items: center;
@@ -14,7 +18,7 @@
     }
 
     .mat-button-toggle-checked {
-        background-color: #F7F2FA;
+        background-color: #f7f2fa;
     }
 
     h2 {
