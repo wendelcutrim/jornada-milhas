@@ -22,7 +22,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { ModalComponent } from './shared/modal/modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -39,6 +39,7 @@ import { SeletorPassageiroComponent } from './shared/seletor-passageiro/seletor-
 import { DepoimentosComponent } from './pages/home/depoimentos/depoimentos.component';
 import { LoginComponent } from './pages/login/login.component';
 import { FormUserBaseComponent } from './shared/form-user-base/form-user-base.component';
+import { CadastroComponent } from './pages/cadastro/cadastro.component';
 
 @NgModule({
     declarations: [
@@ -60,6 +61,7 @@ import { FormUserBaseComponent } from './shared/form-user-base/form-user-base.co
         DepoimentosComponent,
         LoginComponent,
         FormUserBaseComponent,
+        CadastroComponent,
     ],
     imports: [
         BrowserModule,
@@ -83,7 +85,7 @@ import { FormUserBaseComponent } from './shared/form-user-base/form-user-base.co
         MatDividerModule,
         MatCheckboxModule,
     ],
-    providers: [],
+    providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -5,8 +5,8 @@
     </mat-icon>
     <input matInput [placeholder]="placeholder" [formControl]="control" [name]="label" ngDefaultControl [matAutocomplete]="auto" />
     <mat-icon matSuffix>search</mat-icon>
-    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-        <mat-option *ngFor="let estado of filteredOptions$ | async" [value]="estado.nome">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayFn">
+        <mat-option *ngFor="let estado of filteredOptions$ | async" [value]="estado">
             {{ estado.nome }}
         </mat-option>
     </mat-autocomplete>

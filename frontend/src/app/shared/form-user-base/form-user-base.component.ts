@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { PATTERNS } from 'src/app/constants/pattern.constant';
-import { UnidadeFederativa } from 'src/app/core/types/type';
+import { FormService } from 'src/app/core/services/form.service';
+import { PessoaUsuaria, UnidadeFederativa } from 'src/app/core/types/type';
+import { FormValidations } from '../validators/form-validator';
 
 @Component({
     selector: 'app-form-user-base',
@@ -9,11 +11,14 @@ import { UnidadeFederativa } from 'src/app/core/types/type';
     styleUrls: ['./form-user-base.component.scss'],
 })
 export class FormUserBaseComponent implements OnInit {
+    @Input() perfilComponent!: boolean;
+    @Output() formValue = new EventEmitter();
+
     cadastroForm!: FormGroup;
     estadoControl = new FormControl<UnidadeFederativa | null>(null, Validators.required);
     emailRegexp = PATTERNS.EMAIL;
 
-    constructor(private formBuilder: FormBuilder) {}
+    constructor(private formBuilder: FormBuilder, private formService: FormService) {}
 
     ngOnInit() {
         this.cadastroForm = this.formBuilder.group({
@@ -26,13 +31,19 @@ export class FormUserBaseComponent implements OnInit {
             genero: [''],
             telefone: [null, Validators.required],
             estado: this.estadoControl,
-            confirmarEmail: [null, [Validators.required, Validators.pattern(this.emailRegexp)]],
-            confirmarSenha: [null, [Validators.required, Validators.minLength(3)]],
+            confirmarEmail: [null, [Validators.required, Validators.pattern(this.emailRegexp)], FormValidations.equalsTo('email')],
+            confirmarSenha: [null, [Validators.required, Validators.minLength(3), FormValidations.equalsTo('senha')]],
             aceitarTermos: [null, [Validators.requiredTrue]],
         });
+
+        this.formService.setCadastro(this.cadastroForm);
     }
 
     submitForm() {
         console.log(this.cadastroForm.value);
+        this.formValue.emit();
+        this.cadastroForm.reset();
+        this.cadastroForm.markAsPristine();
+        this.cadastroForm.markAsUntouched();
     }
 }

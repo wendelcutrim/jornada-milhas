@@ -3,7 +3,7 @@
         <form [formGroup]="cadastroForm" (ngSubmit)="submitForm()">
             <mat-card-title> Crie sua conta </mat-card-title>
             <section>
-                <div class="acoesPerfil">
+                <div class="acoesPerfil" *ngIf="perfilComponent">
                     <h2>Dados pessoais</h2>
                     <button mat-stroked-button color="primary">
                         <mat-icon>logout</mat-icon>
@@ -56,8 +56,8 @@
                     </div>
                 </div>
             </mat-card-content>
-            <mat-divider></mat-divider>
-            <div class="acessoPerfil">
+            <mat-divider *ngIf="perfilComponent"></mat-divider>
+            <div class="acessoPerfil" *ngIf="perfilComponent">
                 <h2>Dados de acesso</h2>
             </div>
             <mat-card-content>
@@ -68,12 +68,14 @@
                             <input matInput formControlName="email" type="email" placeholder="Digite seu e-mail" />
                             <mat-error *ngIf="cadastroForm.get('email')?.errors?.['required']">E-mail é obrigatório</mat-error>
                             <mat-error *ngIf="cadastroForm.get('email')?.errors?.['pattern']">E-mail inválido</mat-error>
+                            <mat-error *ngIf="cadastroForm.get('email')?.errors?.['equalsTo']">Emails não coincidem</mat-error>
                         </mat-form-field>
                         <mat-form-field appearance="outline">
                             <mat-label>Senha</mat-label>
                             <input matInput formControlName="senha" type="password" placeholder="Digite sua senha" />
                             <mat-error *ngIf="cadastroForm.get('senha')?.errors?.['required']">Senha é obrigatória</mat-error>
                             <mat-error *ngIf="cadastroForm.get('senha')?.errors?.['minlength']">Senha deve ter pelo menos 3 caracteres</mat-error>
+                            <mat-error *ngIf="cadastroForm.get('senha')?.errors?.['equalsTo']">Senhas não coincidem</mat-error>
                         </mat-form-field>
                     </div>
                     <div class="grid-item">
