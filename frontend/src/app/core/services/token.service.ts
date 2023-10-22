@@ -7,15 +7,15 @@ const KEY = '@jornada-milhas:token';
 })
 export class TokenService {
     saveToken(token: string) {
-        localStorage.setItem(KEY, token);
+        sessionStorage.setItem(KEY, token);
     }
 
     destroyToken() {
-        localStorage.removeItem(KEY);
+        sessionStorage.removeItem(KEY);
     }
 
     getToken() {
-        return localStorage.getItem(KEY) ?? '';
+        return sessionStorage.getItem(KEY) ?? '';
     }
 
     hasToken() {
