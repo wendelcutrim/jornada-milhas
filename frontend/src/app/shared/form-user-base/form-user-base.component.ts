@@ -12,7 +12,11 @@ import { FormValidations } from '../validators/form-validator';
 })
 export class FormUserBaseComponent implements OnInit {
     @Input() perfilComponent!: boolean;
+    @Input() title: string = 'Crie sua conta';
+    @Input() btnText: string = 'cadastrar';
     @Output() formValue = new EventEmitter();
+    @Output() logoutEvent = new EventEmitter();
+    @Output() logoutBtnClick = new EventEmitter();
 
     cadastroForm!: FormGroup;
     estadoControl = new FormControl<UnidadeFederativa | null>(null, Validators.required);
@@ -36,6 +40,14 @@ export class FormUserBaseComponent implements OnInit {
             aceitarTermos: [null, [Validators.requiredTrue]],
         });
 
+        if (this.perfilComponent) {
+            this.cadastroForm.get('aceitarTermos')?.setValidators(null);
+        } else {
+            this.cadastroForm.get('aceitarTermos')?.setValidators(Validators.requiredTrue);
+        }
+
+        this.cadastroForm.get('aceitarTermos')?.updateValueAndValidity();
+
         this.formService.setCadastro(this.cadastroForm);
     }
 
@@ -45,5 +57,13 @@ export class FormUserBaseComponent implements OnInit {
         this.cadastroForm.reset();
         this.cadastroForm.markAsPristine();
         this.cadastroForm.markAsUntouched();
+    }
+
+    logout() {
+        this.logoutEvent.emit();
+    }
+
+    handleLoogoutBtnClick() {
+        this.logoutBtnClick.emit();
     }
 }

@@ -40,6 +40,7 @@ import { DepoimentosComponent } from './pages/home/depoimentos/depoimentos.compo
 import { LoginComponent } from './pages/login/login.component';
 import { FormUserBaseComponent } from './shared/form-user-base/form-user-base.component';
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
+import { PerfilComponent } from './pages/perfil/perfil.component';
 
 @NgModule({
     declarations: [
@@ -62,6 +63,7 @@ import { CadastroComponent } from './pages/cadastro/cadastro.component';
         LoginComponent,
         FormUserBaseComponent,
         CadastroComponent,
+        PerfilComponent,
     ],
     imports: [
         BrowserModule,
