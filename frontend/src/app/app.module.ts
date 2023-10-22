@@ -31,7 +31,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { BotaoControleComponent } from './shared/botao-controle/botao-controle.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { PromocoesComponent } from './pages/home/promocoes/promocoes.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DropdownUfComponent } from './shared/dropdown-uf/dropdown-uf.component';
@@ -41,6 +41,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { FormUserBaseComponent } from './shared/form-user-base/form-user-base.component';
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
+import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 
 @NgModule({
     declarations: [
@@ -87,7 +88,10 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
         MatDividerModule,
         MatCheckboxModule,
     ],
-    providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }],
+    providers: [
+        { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
+        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    ],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

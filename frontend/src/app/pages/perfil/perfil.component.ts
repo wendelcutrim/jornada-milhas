@@ -30,7 +30,7 @@ export class PerfilComponent implements OnInit {
 
     ngOnInit(): void {
         this.token = this.tokenService.getToken();
-        this.cadastroService.buscarCadasro(this.token).subscribe({
+        this.cadastroService.buscarCadasro().subscribe({
             next: (res) => {
                 this.cadastro = res;
                 this.nome.set(res.nome);
@@ -78,7 +78,7 @@ export class PerfilComponent implements OnInit {
         console.log(this.form?.value);
         console.log(this.form?.valid);
 
-        this.cadastroService.editarCadastro(this.token, dadosAtualizados).subscribe({
+        this.cadastroService.editarCadastro(dadosAtualizados).subscribe({
             next: (res) => {
                 console.log(res);
                 alert('Dados atualizado com sucesso');
