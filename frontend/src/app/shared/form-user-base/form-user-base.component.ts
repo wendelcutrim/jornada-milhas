@@ -16,7 +16,6 @@ export class FormUserBaseComponent implements OnInit {
     @Input() btnText: string = 'cadastrar';
     @Output() formValue = new EventEmitter();
     @Output() logoutEvent = new EventEmitter();
-    @Output() logoutBtnClick = new EventEmitter();
 
     cadastroForm!: FormGroup;
     estadoControl = new FormControl<UnidadeFederativa | null>(null, Validators.required);
@@ -61,9 +60,5 @@ export class FormUserBaseComponent implements OnInit {
 
     logout() {
         this.logoutEvent.emit();
-    }
-
-    handleLoogoutBtnClick() {
-        this.logoutBtnClick.emit();
     }
 }
