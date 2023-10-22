@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, computed, inject, signal } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { CadastroService } from 'src/app/core/services/cadastro.service';
 import { FormBuscaService } from 'src/app/core/services/form-busca.service';
@@ -15,7 +15,8 @@ export class PerfilComponent implements OnInit {
     title: string = 'Olá pessoa';
     btnText: string = 'atualizar';
     token: string = '';
-    _nome: string = '';
+    nome = signal('');
+    welcomeName = computed(() => `Olá ${this.nome()}`);
     cadastro!: PessoaUsuaria;
     form!: FormGroup<any> | null;
 
@@ -28,7 +29,7 @@ export class PerfilComponent implements OnInit {
         this.cadastroService.buscarCadasro(this.token).subscribe({
             next: (res) => {
                 this.cadastro = res;
-                this._nome = res.nome;
+                this.nome.set(res.nome);
                 this.carregarFormulario();
             },
             error: (err) => console.error('[ERROR]: ', err),
@@ -57,9 +58,5 @@ export class PerfilComponent implements OnInit {
 
     update() {
         console.log('Atualizar realizado com sucesso!');
-    }
-
-    get nome() {
-        return `Olá ${this._nome}`;
     }
 }
