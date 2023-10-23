@@ -34,8 +34,8 @@ export class FormUserBaseComponent implements OnInit {
             genero: [''],
             telefone: [null, Validators.required],
             estado: this.estadoControl,
-            confirmarEmail: [null, [Validators.required, Validators.pattern(this.emailRegexp)], FormValidations.equalsTo('email')],
-            confirmarSenha: [null, [Validators.required, Validators.minLength(3), FormValidations.equalsTo('senha')]],
+            // confirmarEmail: [null, [Validators.required, Validators.pattern(this.emailRegexp)], FormValidations.equalsTo('email')],
+            // confirmarSenha: [null, [Validators.required, Validators.minLength(3), FormValidations.equalsTo('senha')]],
             aceitarTermos: [null, [Validators.requiredTrue]],
         });
 
@@ -53,9 +53,9 @@ export class FormUserBaseComponent implements OnInit {
     submitForm() {
         console.log(this.cadastroForm.value);
         this.formValue.emit();
-        this.cadastroForm.reset();
-        this.cadastroForm.markAsPristine();
-        this.cadastroForm.markAsUntouched();
+        // this.cadastroForm.reset();
+        // this.cadastroForm.markAsPristine();
+        // this.cadastroForm.markAsUntouched();
     }
 
     logout() {

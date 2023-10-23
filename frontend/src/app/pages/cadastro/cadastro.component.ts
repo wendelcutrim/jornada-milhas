@@ -17,11 +17,12 @@ export class CadastroComponent {
 
     onSubmit() {
         const form = this.formService.getCadastro();
-        console.log(form);
+        console.log('formService: ', form);
 
         if (form?.valid) {
-            const novoCadstro = form.getRawValue() as PessoaUsuaria;
-            this.cadastroService.cadastrar(novoCadstro).subscribe({
+            const novoCadastro = form.getRawValue() as PessoaUsuaria;
+            console.log('novoCadastro: ', novoCadastro);
+            this.cadastroService.cadastrar(novoCadastro).subscribe({
                 next: (res) => {
                     console.log('cadastro realizado com sucesso', res);
                     this.router.navigate(['/login']);
