@@ -4,12 +4,13 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
+import { authGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'login', component: LoginComponent },
     { path: 'cadastro', component: CadastroComponent },
-    { path: 'perfil', component: PerfilComponent },
+    { path: 'perfil', component: PerfilComponent, canActivate: [authGuard] },
 ];
 
 @NgModule({
